@@ -24,6 +24,7 @@
             
                 
                <ul class="nav">
+               <li><a href="/ballots/rank"> Reporte</a></li>
                      <li><a href="/roles"> Roles </a>
                        <ul>
                             <li><a id="add"href="/roles/add" >Añadir rol</a></li>
@@ -88,10 +89,19 @@
 				<input type="number" step="0.01" name="precio" placeholder="Edita el precio" value="<%=produc.getPrecio() %>" required class="form-control">
 				<label>Edite su tamaño aro</label>
 				<input type="number" name="aro" placeholder="Edita tu tamaño" value="<%=produc.getAro() %>" required class="form-control">
+				<label>Stock</label>
+				<select class="form-control" name="stock">
+					<option value="true" >True
+					</option>
+					<option value="false">False
+					</option>
+				</select>
 				<input type="submit" value="Editar">
 			</form>
 		</div>
-		 <footer id="pie">Valeria Nicoll Calderon Rodriguez - C.U.I:20162908 
+		 <footer id="pie">Valeria Nicoll Calderon Rodriguez-Diego Flores Camargo - Rodrigo Oleachea Sanchez
+	 <br><a title="facebook" href="https://web.facebook.com/pg/Llantas-DJ-486510835126807/about/?ref=page_internal"><img src="/css/icoface.png" width="20px" /></a>
+         <a title="Whatsapp" href="https://web.whatsapp.com/" ><img src="/css/icoWhats.png" width="20px" /></a>980702144 <a title="Gmail" href="https://mail.google.com/mail/" ><img src="/css/icoGmail.png" width="20px" /></a>jcamarguito@hotmail.com
           </footer>
           
                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -1,6 +1,9 @@
-
+<%@page import="java.util.*" %>
 <%
 	String Nboleta = (String) request.getAttribute("Nboleta");
+	List<String> largo = (List<String>) request.getAttribute("largo");
+	List<String> ancho = (List<String>) request.getAttribute("ancho");
+	List<String> aro = (List<String>) request.getAttribute("aro");
 %>
 <!DOCTYPE html>
 <html>
@@ -18,13 +21,12 @@
 <link href="https://fonts.googleapis.com/css?family=Calligraffitti"
 	rel="stylesheet">
 <title>Añadir Boleta</title>
-
-
 <header>
 <div class="wrapper">
 
 
 	<ul class="nav">
+	<li><a href="/ballots/rank"> Reporte</a></li>
 		<li><a href="/roles"> Roles </a>
 			<ul>
 				<li><a id="add" href="/roles/add">Añadir rol</a></li>
@@ -88,12 +90,32 @@
 			<label>N° Boleta: </label> <br>
 			<input class="form-control" type="text" readonly value="<%=Nboleta%>"><br /> 
 			<label>Llanta: </label> <br>
-			<input class="form-control" type="text" name="llanta" required> <br /> 
+			<select name="largo" class="selectmod" >
+			<%for(String l : largo){ %>
+				<option value="<%=l %>"><%=l %></option>
+				<%} %>
+			</select>
+			/
+			<select name="ancho" class="selectmod" >
+			<%for(String an : ancho){ %>	
+				<option value="<%=an %>"><%=an %></option>
+				<%} %>
+			</select>
+			R
+			<select name="aro" class="selectmod" >
+			<%for(String ar : aro){ %>	
+				<option value="<%=ar %>"><%=ar %></option>
+				<%} %>
+			</select> 
 			<label>PrecioUnitario: </label><br> 
 			<input class="form-control" type="text" name="precioUnit" required> 
 			<input name="Enviar" type="submit" value="Emitir Boleta">
 		</form>
 	</div>
+	<footer id="pie">Valeria Nicoll Calderon Rodriguez-Diego Flores Camargo - Rodrigo Oleachea Sanchez
+	 <br><a title="facebook" href="https://web.facebook.com/pg/Llantas-DJ-486510835126807/about/?ref=page_internal"><img src="/css/icoface.png" width="20px" /></a>
+         <a title="Whatsapp" href="https://web.whatsapp.com/" ><img src="/css/icoWhats.png" width="20px" /></a>980702144 <a title="Gmail" href="https://mail.google.com/mail/" ><img src="/css/icoGmail.png" width="20px" /></a>jcamarguito@hotmail.com
+          </footer>
 	<script>
 				(function(){
 					
@@ -120,7 +142,7 @@
 							alert("El campo DNI deben ser solo numeros");
 							e.preventDefault();
 						} 
-						else if(formulario.telefono.value.length < 8 || formulario.celular.value.length > 8){
+						else if(formulario.dni.value.length < 8 || formulario.dni.value.length > 8){
 							alert("El campo dni debe contener un número de 8 digitos");
 							e.preventDefault();
 						}
@@ -136,26 +158,24 @@
 							alert("Llene el campo distrito");
 							e.preventDefault();
 						}
-						else if(isNaN(formulario.distrito.value)){
-							alert("Complete el campo DISTRITO solo con letras");
+					}
+					var validarTelefono = function(e){
+						if(formulario.telefono.value == ""){
+							alert("Llene el campo telefono");
 							e.preventDefault();
 						}
-						var validarTelefono = function(e){
-							if(formulario.telefono.value == ""){
-								alert("Llene el campo telefono");
-								e.preventDefault();
-							}
-							else if(isNaN(formulario.telefono.value)){
-								alert("Compelete el campo TELEFONO solo con números");
-								e.preventDefault();
-							}
-							else if(formulario.telefono.value.length < 9 || formulario.celular.value.length > 9){
-								alert("El campo telefono debe contener un número de 9 digitos");
-								e.preventDefault();
-							}
+						else if(isNaN(formulario.telefono.value)){
+							alert("Compelete el campo TELEFONO solo con números");
+							e.preventDefault();
 						}
-
+						else if(formulario.telefono.value.length < 9 || formulario.celular.value.length > 9){
+							alert("El campo telefono debe contener un número de 9 digitos");
+							e.preventDefault();
+						}
 					}
+					
+
+					
 					var validarCantidad = function(e){
 						if(formulario.cantidad.value == ""){
 							alert("Llene el campo cantidad");

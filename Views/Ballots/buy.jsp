@@ -1,8 +1,12 @@
 <%@page import="model.entity.*" %>
+<%@page import="java.util.*" %>
 <%
 	Producto aux = (Producto) request.getAttribute("produc");
 	User elUser = (User) request.getAttribute("user");
 	String NBoleta = (String) request.getAttribute("NBoleta");
+	List<String> largo = (List<String>) request.getAttribute("largo");
+	List<String> ancho = (List<String>) request.getAttribute("ancho");
+	List<String> aro = (List<String>) request.getAttribute("aro");
 %>
 <!DOCTYPE html>
 <html>
@@ -27,6 +31,7 @@
 
 
 	<ul class="nav">
+	<li><a href="/ballots/rank"> Reporte</a></li>
 		<li><a href="/roles"> Roles </a>
 			<ul>
 				<li><a id="add" href="/roles/add">Añadir rol</a></li>
@@ -89,13 +94,33 @@
 			<input class="form-control" type="number" name="cantidad" placeholder="N°" required> 
 			<label>N° Boleta: </label> 
 			<input class="form-control" type="text" readonly value="<%=NBoleta%>"><br /> 
-			<label>Llanta: </label> 
-			<input class="form-control" type="text" name="llanta" value="<%=aux.getMedida() %>R<%=aux.getAro() %>" readonly> <br /> 
+			<label>Llanta: </label> <br>
+			<select name="largo" class="selectmod" >
+			<%for(String l : largo){ %>
+				<option value="<%=l %>" <%if(l.equals(aux.getMedida().substring(0, aux.getMedida().indexOf("/")))){ %> selected <%} %>><%=l %></option>
+				<%} %>
+			</select>
+			/
+			<select name="ancho" class="selectmod" >
+			<%for(String an : ancho){ %>	
+				<option value="<%=an %>" <%if(an.equals(aux.getMedida().substring(aux.getMedida().indexOf("/")+1))){ %> selected <%} %>><%=an %></option>
+				<%} %>
+			</select>
+			R
+			<select name="aro" class="selectmod" >
+			<%for(String ar : aro){ %>	
+				<option value="<%=ar %>" <%if(ar.equals(aux.getAro())){ %> selected <%} %>><%=ar %></option>
+				<%} %>
+			</select>
 			<label>PrecioUnitario: </label> 
 			<input class="form-control" type="text" name="precioUnit" value="<%=aux.getPrecio() %>" readonly> 
 			<input name="Enviar" type="submit" value="Emitir Boleta">
 		</form>
 	</div>
+	<footer id="pie">Valeria Nicoll Calderon Rodriguez-Diego Flores Camargo - Rodrigo Oleachea Sanchez
+	 <br><a title="facebook" href="https://web.facebook.com/pg/Llantas-DJ-486510835126807/about/?ref=page_internal"><img src="/css/icoface.png" width="20px" /></a>
+         <a title="Whatsapp" href="https://web.whatsapp.com/" ><img src="/css/icoWhats.png" width="20px" /></a>980702144 <a title="Gmail" href="https://mail.google.com/mail/" ><img src="/css/icoGmail.png" width="20px" /></a>jcamarguito@hotmail.com
+          </footer>
 	<script>
 				(function(){
 					

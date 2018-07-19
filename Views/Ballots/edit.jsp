@@ -1,6 +1,10 @@
 <%@page import="model.entity.Ballot"%>
+<%@page import="java.util.*"%>
 <%
 	Ballot a = (Ballot) request.getAttribute("ballot");
+	List<String> largo = (List<String>) request.getAttribute("largo");
+	List<String> ancho = (List<String>) request.getAttribute("ancho");
+	List<String> aro = (List<String>) request.getAttribute("aro");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,6 +28,7 @@
 
 
 	<ul class="nav">
+	<li><a href="/ballots/rank"> Reporte</a></li>
 		<li><a href="/roles"> Roles </a>
 			<ul>
 				<li><a id="add" href="/roles/add">Añadir rol</a></li>
@@ -82,16 +87,36 @@
 			<label>Teléfono: </label> <br>
 			<input class="form-control" type="number" name="telefono" placeholder="Su Teléfono" value="<%=a.getTelefono() %>" required><br /> 
 			<label>Cantidad: </label> <br>
-			<input class="form-control" type="number" name="cantidad" placeholder="N°" required> 
+			<input class="form-control" type="number" name="cantidad" value="<%=a.getCantidad() %>" placeholder="N°" required> 
 			<label>N° Boleta: </label> <br>
 			<input class="form-control" type="text" readonly value="<%=a.getNBoleta() %>"><br /> 
 			<label>Llanta: </label> <br>
-			<input class="form-control" type="text" name="llanta" value="<%=a.getLlanta() %>" required> <br /> 
+			<select name="largo" class="selectmod" >
+			<%for(String l : largo){ %>
+				<option value="<%=l %>" <%if(l.equals(a.getLlanta().substring(0, a.getLlanta().indexOf("/")))){ %> selected <%} %>><%=l %></option>
+				<%} %>
+			</select>
+			/
+			<select name="ancho" class="selectmod" >
+			<%for(String an : ancho){ %>	
+				<option value="<%=an %>" <%if(an.equals(a.getLlanta().substring(a.getLlanta().indexOf("/")+1,a.getLlanta().indexOf("R")))){ %> selected <%} %>><%=an %></option>
+				<%} %>
+			</select>
+			R
+			<select name="aro" class="selectmod" >
+			<%for(String ar : aro){ %>	
+				<option value="<%=ar %>" <%if(ar.equals(a.getLlanta().substring(a.getLlanta().indexOf("R")))){ %> selected <%} %>><%=ar %></option>
+				<%} %>
+			</select>
 			<label>PrecioUnitario: </label><br> 
 			<input class="form-control" type="text" name="precioUnit" value="<%=a.getPrecioUnitario() %>" required> 
 			<input name="Enviar" type="submit" value="Guardar Boleta">
 		</form>
 	</div>
+	<footer id="pie">Valeria Nicoll Calderon Rodriguez-Diego Flores Camargo - Rodrigo Oleachea Sanchez
+	 <br><a title="facebook" href="https://web.facebook.com/pg/Llantas-DJ-486510835126807/about/?ref=page_internal"><img src="/css/icoface.png" width="20px" /></a>
+         <a title="Whatsapp" href="https://web.whatsapp.com/" ><img src="/css/icoWhats.png" width="20px" /></a>980702144 <a title="Gmail" href="https://mail.google.com/mail/" ><img src="/css/icoGmail.png" width="20px" /></a>jcamarguito@hotmail.com
+          </footer>
 	<script>
 				(function(){
 					

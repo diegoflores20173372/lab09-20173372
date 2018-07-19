@@ -26,6 +26,7 @@
 
 
 	<ul class="nav">
+	<li><a href="/ballots/rank"> Reporte</a></li>
 		<li><a href="/roles"> Roles </a>
 			<ul>
 				<li><a id="add" href="/roles/add">Añadir rol</a></li>
@@ -124,6 +125,10 @@
 		}
 	%>
 	</div>
+	<footer id="pie">Valeria Nicoll Calderon Rodriguez-Diego Flores Camargo - Rodrigo Oleachea Sanchez
+	 <br><a title="facebook" href="https://web.facebook.com/pg/Llantas-DJ-486510835126807/about/?ref=page_internal"><img src="/css/icoface.png" width="20px" /></a>
+         <a title="Whatsapp" href="https://web.whatsapp.com/" ><img src="/css/icoWhats.png" width="20px" /></a>980702144 <a title="Gmail" href="https://mail.google.com/mail/" ><img src="/css/icoGmail.png" width="20px" /></a>jcamarguito@hotmail.com
+          </footer>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
